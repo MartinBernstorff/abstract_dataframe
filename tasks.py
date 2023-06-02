@@ -154,7 +154,7 @@ def add_and_commit(c: Context, msg: Optional[str] = None):
             "git status --porcelain",
             pty=NOT_WINDOWS,
             hide=True,
-        ).stdout
+        ).stdout  # type: ignore
 
         echo_header(
             f"{msg_type.WARN} Uncommitted changes detected",
@@ -200,7 +200,7 @@ def update_pr(c: Context):
     echo_header(f"{msg_type.COMMUNICATE} Syncing PR")
     # Get current branch name
     branch_name = Path(".git/HEAD").read_text().split("/")[-1].strip()
-    pr_result: Result = c.run(
+    pr_result: Result = c.run(  # type: ignore
         "gh pr list --state OPEN",
         pty=False,
         hide=True,
