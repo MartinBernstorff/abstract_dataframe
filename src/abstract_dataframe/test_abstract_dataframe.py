@@ -13,7 +13,10 @@ class TestDataframeColumns(Columns):
 
 class TestDataframe(StaticDataframe):
     def __init__(
-        self, df: pl.DataFrame, cols: TestDataframeColumns, validate_on_init: bool,
+        self,
+        df: pl.DataFrame,
+        cols: TestDataframeColumns,
+        validate_on_init: bool,
     ):
         self.__df = df
         self.__cols = cols
@@ -31,7 +34,9 @@ def test_abstract_dataframe():
     )
 
     general_df = TestDataframe(
-        df=input_df, cols=TestDataframeColumns(), validate_on_init=True,
+        df=input_df,
+        cols=TestDataframeColumns(),
+        validate_on_init=True,
     )
 
     df, cols = general_df.unpack()
