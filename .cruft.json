@@ -1,0 +1,23 @@
+{
+  "template": "https://github.com/MartinBernstorff/swift-python-cookiecutter",
+  "commit": "231e9ab64e3627432b01d3f8d81f6229ce94d384",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "abstract_dataframe",
+      "package_name": "abstract_dataframe",
+      "friendly_name": "Abstract_Dataframe",
+      "author": "Martin Bernstorff",
+      "email": "martinbernstorff@gmail.com",
+      "github_user": "MartinBernstorff",
+      "version": "0.0.0",
+      "copyright_year": "2023",
+      "license": "MIT",
+      "_copy_without_render": [
+        "*.github"
+      ],
+      "_template": "https://github.com/MartinBernstorff/swift-python-cookiecutter"
+    }
+  },
+  "directory": null
+}
