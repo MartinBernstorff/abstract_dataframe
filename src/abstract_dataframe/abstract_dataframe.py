@@ -1,5 +1,4 @@
-from abc import ABC, abstractmethod
-from typing import Sequence
+from abc import abstractmethod
 
 import polars as pl
 
