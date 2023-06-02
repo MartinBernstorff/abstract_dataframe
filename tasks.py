@@ -22,7 +22,9 @@ import shutil
 from pathlib import Path
 from typing import List, Optional
 
-from invoke import Context, Result, task
+from invoke.context import Context
+from invoke.runners import Result
+from invoke.tasks import task
 
 # Extract supported python versions from the pyproject.toml classifiers key
 SUPPORTED_PYTHON_VERSIONS = [
@@ -135,7 +137,7 @@ def _add_commit(c: Context, msg: Optional[str] = None):
 
 
 def is_uncommitted_changes(c: Context) -> bool:
-    git_status_result: Result = c.run(
+    git_status_result: Result = c.run(  # type: ignore
         "git status --porcelain",
         pty=NOT_WINDOWS,
         hide=True,
@@ -167,7 +169,7 @@ def add_and_commit(c: Context, msg: Optional[str] = None):
 def branch_exists_on_remote(c: Context) -> bool:
     branch_name = Path(".git/HEAD").read_text().split("/")[-1].strip()
 
-    branch_exists_result: Result = c.run(
+    branch_exists_result: Result = c.run(  # type: ignore
         f"git ls-remote --heads origin {branch_name}",
         hide=True,
     )
@@ -238,6 +240,9 @@ def pre_commit(c: Context, auto_fix: bool):
     pre_commit_cmd = "pre-commit run --all-files"
     result = c.run(pre_commit_cmd, pty=NOT_WINDOWS, warn=True)
 
+    if result is None:
+        raise ValueError("Pre-commit failed")
+
     exit_if_error_in_stdout(result)
 
     if ("fixed" in result.stdout or "reformatted" in result.stdout) and auto_fix:
@@ -245,6 +250,10 @@ def pre_commit(c: Context, auto_fix: bool):
 
         print(f"{msg_type.DOING} Fixed errors, re-running pre-commit checks")
         second_result = c.run(pre_commit_cmd, pty=NOT_WINDOWS, warn=True)
+
+        if second_result is None:
+            raise ValueError("Pre-commit failed")
+
         exit_if_error_in_stdout(second_result)
     else:
         if result.return_code != 0:
@@ -353,7 +362,7 @@ def test(
 
     pytest_arg_str = " ".join(pytest_args)
 
-    test_result: Result = c.run(
+    test_result: Result = c.run(  # type: ignore
         f"tox -e {python_version_arg_string} -- {pytest_arg_str}",
         warn=True,
         pty=NOT_WINDOWS,
