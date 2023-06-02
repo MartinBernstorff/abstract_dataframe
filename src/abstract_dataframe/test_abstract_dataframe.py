@@ -18,14 +18,14 @@ class TestDataframe(StaticDataframe):
         cols: TestDataframeColumns,
         validate_on_init: bool,
     ):
-        self.__df = df
-        self.__cols = cols
+        self._df = df
+        self._cols = cols
 
         if validate_on_init:
             self._validate()
 
     def unpack(self) -> tuple[pl.DataFrame, TestDataframeColumns]:
-        return self.__df, self.__cols
+        return self._df, self._cols
 
 
 def test_abstract_dataframe():
