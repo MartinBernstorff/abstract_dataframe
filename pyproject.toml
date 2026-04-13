@@ -52,7 +52,7 @@ docs = [
   "sphinx_design>=0.3.0",
   "sphinx_togglebutton>=0.2.3",
   "myst-nb>=0.6.0",  # for rendering notebooks
-  "jupyter>=1.0.0",  # for tutorials
+  "jupyter>=1.1.1",  # for tutorials
 ]
 
 
