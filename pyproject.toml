@@ -51,7 +51,7 @@ docs = [
   "sphinxext-opengraph>=0.13.0",
   "sphinx_design>=0.6.1",
   "sphinx_togglebutton>=0.4.5",
-  "myst-nb>=0.6.0",  # for rendering notebooks
+  "myst-nb>=1.3.0",  # for rendering notebooks
   "jupyter>=1.1.1",  # for tutorials
 ]
 
