@@ -33,7 +33,7 @@ dev = [
   "pyright-polite>=0.0.1",
   "pre-commit>=4.3.0",
   "ruff>=0.0.254",
-  "black[jupyter]>=22.8.0",
+  "black[jupyter]>=25.11.0",
   "pandas-stubs>=0.0.0", # type stubs for pandas
   "invoke>=2.0.0",
 ]
