@@ -34,7 +34,7 @@ dev = [
   "pre-commit>=4.3.0",
   "ruff>=0.15.10",
   "black[jupyter]>=25.11.0",
-  "pandas-stubs>=0.0.0", # type stubs for pandas
+  "pandas-stubs>=2.2.2.240807", # type stubs for pandas
   "invoke>=3.0.3",
 ]
 tests = [
